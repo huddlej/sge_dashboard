@@ -4,7 +4,10 @@ Parse a given qacct file and load it into the database.
 import argparse
 import pprint
 
-from models import Job
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sge_dashboard.settings")
+
+from dashboard.models import Job
 
 
 def parse_qacct(qacct_filename):
