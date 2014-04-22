@@ -25,9 +25,7 @@ def parse_qacct(qacct_filename):
             elif line.startswith("="):
                 # New records start with a full line of =.
                 if job is not None:
-                    #job.save()
                     jobs.append(job)
-                    break
 
                 job = Job()
             else:
@@ -42,6 +40,7 @@ def parse_qacct(qacct_filename):
                         # Otherwise, keep values as strings.
                         setattr(job, pieces[0], pieces[-1])
 
+    Job.objects.bulk_create(jobs)
     pprint.pprint(jobs)
 
 
