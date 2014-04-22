@@ -8,14 +8,14 @@ class Job(models.Model):
 
     Only a subset of all reported fields are represented here.
     """
-    job_id = models.IntegerField()
-    queue = models.CharField(max_length=20)
+    jobnumber = models.IntegerField()
+    qname = models.CharField(max_length=20)
     hostname = models.CharField(max_length=100)
     owner = models.CharField(max_length=8)
-    job_name = models.CharField(max_length=100)
+    jobname = models.CharField(max_length=100)
     slots = models.IntegerField()
     exit_status = models.IntegerField()
-    run_time = models.IntegerField()
-    memory_used = models.IntegerField()
-    block_input_operations = models.IntegerField()
-    block_output_operations = models.IntegerField()
+    ru_wallclock = models.IntegerField(help="Run time")
+    ru_maxrss = models.IntegerField(help="Max memory used")
+    ru_inblock = models.IntegerField()
+    ru_oublock = models.IntegerField()
