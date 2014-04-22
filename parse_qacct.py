@@ -37,10 +37,10 @@ def parse_qacct(qacct_filename):
                 if pieces[0] != "":
                     try:
                         # Cast all values to integers if possible.
-                        job.setattr(pieces[0], int(pieces[-1]))
+                        setattr(job, pieces[0], int(pieces[-1]))
                     except ValueError:
                         # Otherwise, keep values as strings.
-                        job.setattr(pieces[0], pieces[-1])
+                        setattr(job, pieces[0], pieces[-1])
 
     pprint.pprint(jobs)
 
