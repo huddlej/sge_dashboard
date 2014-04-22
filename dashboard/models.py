@@ -19,3 +19,6 @@ class Job(models.Model):
     ru_maxrss = models.IntegerField(help_text="Max memory used")
     ru_inblock = models.IntegerField()
     ru_oublock = models.IntegerField()
+
+    def __unicode__(self):
+        return u"%s (%s)" % (self.jobname, self.jobnumber)
