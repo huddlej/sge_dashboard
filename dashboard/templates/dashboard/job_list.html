@@ -1,0 +1,30 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+
+<h1>Dashboard</h1>
+
+<table class="table">
+    <tr>
+        <th>User</th>
+        <th><a href="?order_by=total_memory">Memory</a></th>
+        <th><a href="?order_by=total_slots">Slots</a></th>
+        <th><a href="?order_by=total_jobs">Jobs</a></th>
+    </tr>
+{% for owner in object_list %}
+    <tr>
+        <td>{{ owner.owner }}</td>
+        <td>{{ owner.total_memory }}</td>
+        <td>{{ owner.total_slots }}</td>
+        <td>{{ owner.total_jobs }}</td>
+    </tr>
+{% empty %}
+    <li>No jobs yet</li>
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}
